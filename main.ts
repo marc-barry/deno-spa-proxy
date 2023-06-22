@@ -12,7 +12,7 @@ try {
   APPS = (await import("./config.ts")).APPS;
 } catch (_error) {
   console.error(
-    "No config module provided. It must exist at ./config.ts and export APPS."
+    "No config module provided. It must exist at ./config.ts and export APPS.",
   );
   Deno.exit(1);
 }
@@ -24,16 +24,16 @@ const app = new Application();
 // Logger
 app.use(async (context, next) => {
   logger.info(
-    `${context.request.headers.get("Host")} ${context.request.method} ${
-      context.request.url
-    }`
+    `${
+      context.request.headers.get("Host")
+    } ${context.request.method} ${context.request.url}`,
   );
   await next();
   const rt = context.response.headers.get("X-Response-Time");
   logger.info(
-    `${context.request.headers.get("Host")} ${context.request.method} ${
-      context.request.url
-    } - ${rt}`
+    `${
+      context.request.headers.get("Host")
+    } ${context.request.method} ${context.request.url} - ${rt}`,
   );
 });
 
@@ -82,8 +82,8 @@ router
           }
           return headers;
         },
-      }
-    )
+      },
+    ),
   )
   .get(
     "/(.*)",
@@ -99,8 +99,8 @@ router
           }
           return headers;
         },
-      }
-    )
+      },
+    ),
   );
 
 app.use(router.routes());
