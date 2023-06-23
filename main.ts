@@ -23,11 +23,6 @@ const app = new Application();
 
 // Logger
 app.use(async (context, next) => {
-  logger.info(
-    `${
-      context.request.headers.get("Host")
-    } ${context.request.method} ${context.request.url}`,
-  );
   await next();
   const rt = context.response.headers.get("X-Response-Time");
   logger.info(
@@ -55,7 +50,7 @@ router
     context.response.status = 200;
   })
   .get("/readyz", async (context) => {
-    const readyFile = Deno.env.get("READY_FILE") || "";
+    const readyFile = Deno.env.get("READY_FILE") || "ready";
     try {
       await Deno.stat(readyFile);
       context.response.body = "ready";
