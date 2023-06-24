@@ -1,8 +1,9 @@
 {
   "tasks": {
     "dev": "deno run --allow-net --allow-read --allow-env --watch main.ts",
-    "docker-build": "docker build . --platform linux/amd64 -t deno-proxy:latest",
-    "docker-run": "docker run -it --rm --platform linux/amd64 --mount type=bind,source=./config.ts,target=/app/config.ts,readonly -p 3000:3000 -t deno-proxy:latest",
+    "docker-build": "docker build . --platform linux/amd64 -t middlenamesfirst/deno-spa-proxy",
+    "docker-push": "docker push middlenamesfirst/deno-spa-proxy",
+    "docker-run": "docker run -it --rm --platform linux/amd64 --mount type=bind,source=./config.ts,target=/app/config.ts,readonly -p 3000:3000 -t middlenamesfirst/deno-spa-proxy",
     "run": "deno run --allow-net --allow-read --allow-env main.ts",
     "test": "deno test --allow-net --allow-read --allow-env"
   }
