@@ -1,5 +1,7 @@
 # deno-spa-proxy
 
+(See https://github.com/marc-barry/go-spa-proxy for a Go based version.)
+
 This is an edge proxy is written in TypeScript and is focused on being as simple
 as possible of a proxy for single page applications (SPAs).
 
