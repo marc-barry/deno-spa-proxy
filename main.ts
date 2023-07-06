@@ -68,6 +68,9 @@ app.get("/readyz", async (context) => {
 app.get("/static/*", (c) => {
   return proxy(c, null, STATIC_CACHE_CONTROL);
 });
+app.get("/_next/static/*", (c) => {
+  return proxy(c, null, STATIC_CACHE_CONTROL);
+});
 
 // Get top level files under root with special handling for login and logout
 app.get("/:top", (c) => {
