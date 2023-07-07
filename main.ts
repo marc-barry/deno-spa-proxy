@@ -1,4 +1,3 @@
-import { serve } from "https://deno.land/std@0.192.0/http/server.ts";
 import { logger } from "https://deno.land/x/hono@v3.2.7/middleware.ts";
 import { Context, Hono } from "https://deno.land/x/hono@v3.2.7/mod.ts";
 import { setResponseHeaders } from "./headers.ts";
@@ -87,4 +86,4 @@ app.get("*", (c) => {
   return proxy(c, "/index.html", INDEX_CACHE_CONTROL);
 });
 
-await serve(app.fetch, { port: PORT });
+Deno.serve({ port: PORT, handler: app.fetch });
